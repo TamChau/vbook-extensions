@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "author": "Tam Chau",
+    "description": ""
+  },
+  "data": [
+    {
+      "name": "truyenhoangdung",
+      "author": "Tam Chau",
+      "path": "https://raw.githubusercontent.com/TamChau/vbook-extensions/main/truyenhoangdung/plugin.zip",
+      "version": 1,
+      "source": "https://truyenhoangdung.xyz",
+      "icon": "https://raw.githubusercontent.com/TamChau/vbook-extensions/main/truyenhoandung/icon.png",
+      "description": "Đọc truyện trên trang truyenhoangdung.xyz",
+      "type": "novel",
+      "locale": "vi_VN"
+    }
+  ]
+}
