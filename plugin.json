@@ -10,7 +10,7 @@
       "path": "https://raw.githubusercontent.com/TamChau/vbook-extensions/main/truyenhoangdung/plugin.zip",
       "version": 1,
       "source": "https://truyenhoangdung.xyz",
-      "icon": "https://raw.githubusercontent.com/TamChau/vbook-extensions/main/truyenhoandung/icon.png",
+      "icon": "https://github.com/TamChau/vbook-extensions/blob/a41ed9ec8a8ec6f3311b473f628d15aa6acb1e89/truyenhoangdung/icon.png",
       "description": "Đọc truyện trên trang truyenhoangdung.xyz",
       "type": "novel",
       "locale": "vi_VN"

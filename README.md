@@ -1,8 +1,8 @@
 ## Vbook Extensions
 
-Extensions cho app Vbook App.
+Extensions cho vBook App.
 
-Tải app tại : https://bit.ly/vbookapp
+Tải app tại: https://bit.ly/vbookapp
 
 ## Link extension:
 
