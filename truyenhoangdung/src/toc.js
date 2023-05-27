@@ -1,43 +1,24 @@
+load("config.js");
+
 function execute(url) {
-    if (url.slice(-1) !== "/")
-        url = url + "/";
-    let browser = Engine.newBrowser();
-    browser.launchAsync(url);
-    var retry = 0;
-    while (retry < 5) {
-        sleep(1000)
-        let doc = browser.html();
-        if (doc.select("#chaptercontainerinner").length > 0) {
-            browser.callJs("document.getElementById('chaptercontainerinner').scrollIntoView();", 100);
-            break;
-        }
-        retry++;
-    }
+  let response = fetch(url);
 
-    retry = 0;
-    var el;
-    while (retry < 5) {
-        sleep(1000)
-        let doc = browser.html();
-        if (doc.select("a.listchapitem").length > 0) {
-            el = doc.select("a.listchapitem");
-            break;
-        }
-        retry++;
-    }
-    browser.close()
+  if (response.ok) {
+    const doc = response.html();
+    let list = doc.select("div#chuong .list-chap .row a");
+    const data = [];
 
-    if (el) {
-        let list = [];
-        for (let i = 0; i < el.length; i++) {
-            var e = el.get(i);
-            list.push({
-                name: e.text(),
-                url: url + "----/----" + i
-            })
-        }
-        return Response.success(list);
-    }
+    for (let i = list.size() - 1; i >= 0; i--) {
+      let e = list.get(i);
 
-    return null;
+      data.push({
+        name: e.text().replace(e.select("span").text(), "").trim(),
+        url: BASE_URL + e.attr("href"),
+        host: BASE_URL,
+      });
+    }
+    return Response.success(data);
+  }
+
+  return null;
 }

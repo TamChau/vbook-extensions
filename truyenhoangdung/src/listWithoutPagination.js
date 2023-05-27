@@ -1,30 +1,11 @@
 load("config.js");
 
-function execute(key, page) {
-  let response;
-
-  if (page !== undefined) {
-    response = fetch(page);
-  } else {
-    response = fetch(BASE_URL + "/home/search", {
-      method: "GET",
-      queries: { search: key },
-    });
-  }
+function execute(url) {
+  let response = fetch(url);
 
   if (response.ok) {
     const doc = response.html();
     const list = doc.select("ul.list-group");
-    let next = doc
-      .select("ul.pagination")
-      .select("li.active + li")
-      .select("a")
-      .attr("href");
-
-    if (next !== "") {
-      next = BASE_URL + next;
-    }
-
     const data = [];
 
     list.select(".list-group-item.list-group-item-table").forEach((e) => {
@@ -43,7 +24,7 @@ function execute(key, page) {
       });
     });
 
-    return Response.success(data, next);
+    return Response.success(data);
   }
 
   return null;

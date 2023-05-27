@@ -1,25 +1,30 @@
+load("config.js");
+
 function execute(url) {
-  let response = fetch(url);
+  const response = fetch(url);
 
   if (response.ok) {
-    let doc = response.html();
-    let infoHtml = doc.select("#chi_tiet .info");
-    let name = infoHtml.select(".title").first();
-    let cover = doc
-      .select("#chi_tiet .image-cover img")
-      .first()
-      .attr("src")
-      .replace("/publics", "https://truyenhoangdung.xyz/publics");
-    let author = infoHtml
+    const doc = response.html();
+    const infoHtml = doc.select("#chi_tiet .info");
+    const name = infoHtml.select(".title").first();
+    name.select("span").remove();
+
+    let cover = doc.select("#chi_tiet .image-cover img").first().attr("src");
+
+    if (cover.startsWith("/publics")) {
+      cover = BASE_URL + cover;
+    }
+
+    const author = infoHtml
       .select(".list .item")
       .get(1)
       .select(".item-value")
       .text();
-    let des = doc.select("#noidung").html();
-    let detail =
+    const des = doc.select("#noidung").html();
+    const detail =
       "Tên gốc: " +
       infoHtml.select(".list .item").get(0).select(".item-value").text();
-    let status = infoHtml
+    const status = infoHtml
       .select(".list .item")
       .get(3)
       .select(".item-value")
@@ -32,7 +37,7 @@ function execute(url) {
       description: des,
       detail,
       ongoing: status === " Hoàn Thành",
-      host: "https://truyenhoangdung.xyz",
+      host: BASE_URL,
     });
   }
 
