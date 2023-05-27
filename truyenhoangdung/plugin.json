@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Truyện Hoàng Dung",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://truyenhoangdung.xyz",
-    "regexp": "(www.)?truyenhoangdung.xyz/truyen/([a-zA-Z0-9])+/\\d+/\\d+/?$",
+    "regexp": "(www.)?truyenhoangdung.xyz/[0-9a-z-]+/?$",
     "description": "",
     "locale": "vi-VN",
     "language": "javascript",

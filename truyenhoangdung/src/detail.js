@@ -21,14 +21,18 @@ function execute(url) {
       .select(".item-value")
       .text();
     const des = doc.select("#noidung").html();
-    const detail =
-      "Tên gốc: " +
-      infoHtml.select(".list .item").get(0).select(".item-value").text();
     const status = infoHtml
       .select(".list .item")
       .get(3)
       .select(".item-value")
       .text();
+    const detail = `Tên gốc: ${infoHtml
+      .select(".list .item")
+      .get(0)
+      .select(".item-value")
+      .text()}\n
+      Tác giả: ${author}\n
+      Trạng thái: ${status}`;
 
     return Response.success({
       name: name.text(),
