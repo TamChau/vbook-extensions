@@ -8,9 +8,9 @@
       "name": "truyenhoangdung",
       "author": "Tam Chau",
       "path": "https://raw.githubusercontent.com/TamChau/vbook-extensions/main/truyenhoangdung/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://truyenhoangdung.xyz",
-      "icon": "https://github.com/TamChau/vbook-extensions/blob/a41ed9ec8a8ec6f3311b473f628d15aa6acb1e89/truyenhoangdung/icon.png",
+      "icon": "https://raw.githubusercontent.com/TamChau/vbook-extensions/main/truyenhoangdung/icon.png",
       "description": "Đọc truyện trên trang truyenhoangdung.xyz",
       "type": "novel",
       "locale": "vi_VN"

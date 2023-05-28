@@ -1,13 +1,9 @@
 load("config.js");
 
 function execute(url, page) {
-  let response;
+  if (!page) page = 0;
 
-  if (page !== undefined) {
-    response = fetch(page);
-  } else {
-    response = fetch(url);
-  }
+  let response = fetch(`${url}/${page}`);
 
   if (response.ok) {
     const doc = response.html();
@@ -16,8 +12,13 @@ function execute(url, page) {
     let next;
 
     if (pagination !== "") {
-      next =
-        BASE_URL + pagination.select("li.active + li").select("a").attr("href");
+      let urlArr = pagination
+        .select("li.active + li")
+        .select("a")
+        .attr("href")
+        .split("/");
+
+      next = urlArr[urlArr.length - 1];
     }
 
     const data = [];

@@ -30,8 +30,10 @@ function execute(url) {
       .select(".list .item")
       .get(0)
       .select(".item-value")
-      .text()}\n
-      Tác giả: ${author}\n
+      .text()}
+      <br />
+      Tác giả: ${author}
+      <br />
       Trạng thái: ${status}`;
 
     return Response.success({

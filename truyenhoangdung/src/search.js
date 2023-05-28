@@ -1,16 +1,12 @@
 load("config.js");
 
 function execute(key, page) {
-  let response;
+  if (!page) page = 0;
 
-  if (page !== undefined) {
-    response = fetch(page);
-  } else {
-    response = fetch(BASE_URL + "/home/search", {
-      method: "GET",
-      queries: { search: key },
-    });
-  }
+  let response = fetch(`${BASE_URL}/home/search/${page}`, {
+    method: "GET",
+    queries: { search: key },
+  });
 
   if (response.ok) {
     const doc = response.html();
@@ -22,7 +18,9 @@ function execute(key, page) {
       .attr("href");
 
     if (next !== "") {
-      next = BASE_URL + next;
+      const urlArr = next.split("/");
+
+      next = urlArr[urlArr.length - 1];
     }
 
     const data = [];
